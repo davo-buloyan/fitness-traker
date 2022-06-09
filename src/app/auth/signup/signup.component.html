@@ -1,0 +1,24 @@
+<section class="signup-form">
+  <form [formGroup]="profileForm" (submit)="onSubmit" fxLayout="column" fxlayoutGap="10px"  fxLayoutAlign="center center" action="">
+    <mat-form-field>
+      <input type="email" formControlName="email" matInput placeholder="Your email" />
+    </mat-form-field>
+    <mat-form-field hintLabel="shuld be 6 char">
+      <input type="password" formControlName="password" matInput placeholder="Your password" />
+      <mat-error *ngIf="profileForm.controls['password'].invalid">Error min length 8 </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Choose a date</mat-label>
+      <input formControlName="date" matInput [matDatepicker]="picker">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+      <mat-checkbox  formControlName="agree">Agree to Terms and Conditions</mat-checkbox>
+
+
+    <button type="submit" mat-button [disabled]="!profileForm.valid" (click)="onSubmit()">Submit</button>
+  </form>
+</section>
