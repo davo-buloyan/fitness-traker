@@ -1,1 +1,13 @@
-<p>login works!</p>
+<section class="signup-form">
+  <form [formGroup]="loginForm" (submit)="onSubmit" fxLayout="column" fxlayoutGap="10px"  fxLayoutAlign="center center" action="">
+    <mat-form-field>
+      <input type="email" formControlName="email" matInput placeholder="Your email" />
+    </mat-form-field>
+    <mat-form-field hintLabel="shuld be 6 char">
+      <input type="password" formControlName="password" matInput placeholder="Your password" />
+      <mat-error *ngIf="loginForm.controls['password'].invalid">Error min length 8 </mat-error>
+    </mat-form-field>
+
+    <button type="submit" mat-button [disabled]="!loginForm.valid" (click)="onSubmit()">Submit</button>
+  </form>
+</section>
